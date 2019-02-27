@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Darwin/x86_64/debug_static/pcre_xclass.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Darwin/x86_64/release_static/pcre_xclass.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Darwin/x86_64/debug_shared/pcre_xclass.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Darwin/x86_64/release_shared/pcre_xclass.o: src/pcre_xclass.c src/pcre_config.h src/pcre_internal.h \
+  src/pcre.h src/ucp.h

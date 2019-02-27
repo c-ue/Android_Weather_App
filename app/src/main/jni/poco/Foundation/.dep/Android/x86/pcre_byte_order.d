@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_static/pcre_byte_order.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_static/pcre_byte_order.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_shared/pcre_byte_order.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_shared/pcre_byte_order.o: src/pcre_byte_order.c src/pcre_config.h \
+  src/pcre_internal.h src/pcre.h src/ucp.h

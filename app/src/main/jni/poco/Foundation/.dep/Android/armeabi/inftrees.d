@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_static/inftrees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_static/inftrees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_shared/inftrees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_shared/inftrees.o: src/inftrees.c src/zutil.h src/zlib.h src/zconf.h \
+  src/inftrees.h

@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_static/pcre_config.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_static/pcre_config.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_shared/pcre_config.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_shared/pcre_config.o: src/pcre_config.c src/pcre_config.h src/pcre_internal.h \
+  src/pcre.h src/ucp.h

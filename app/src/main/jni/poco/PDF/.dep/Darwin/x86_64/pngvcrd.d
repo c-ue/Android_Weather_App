@@ -1,0 +1,1 @@
+/Users/andy/AndroidStudioProjects/poco/PDF/obj/Darwin/x86_64/debug_static/pngvcrd.o /Users/andy/AndroidStudioProjects/poco/PDF/obj/Darwin/x86_64/release_static/pngvcrd.o /Users/andy/AndroidStudioProjects/poco/PDF/obj/Darwin/x86_64/debug_shared/pngvcrd.o /Users/andy/AndroidStudioProjects/poco/PDF/obj/Darwin/x86_64/release_shared/pngvcrd.o: src/pngvcrd.c

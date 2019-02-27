@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_static/pcre_newline.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_static/pcre_newline.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_shared/pcre_newline.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_shared/pcre_newline.o: src/pcre_newline.c src/pcre_config.h src/pcre_internal.h \
+  src/pcre.h src/ucp.h

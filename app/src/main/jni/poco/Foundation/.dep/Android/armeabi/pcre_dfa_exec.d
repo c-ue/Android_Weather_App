@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_static/pcre_dfa_exec.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_static/pcre_dfa_exec.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/debug_shared/pcre_dfa_exec.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/armeabi/release_shared/pcre_dfa_exec.o: src/pcre_dfa_exec.c src/pcre_config.h \
+  src/pcre_internal.h src/pcre.h src/ucp.h

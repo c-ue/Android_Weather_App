@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_static/inffast.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_static/inffast.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_shared/inffast.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_shared/inffast.o: src/inffast.c src/zutil.h src/zlib.h src/zconf.h \
+  src/inftrees.h src/inflate.h src/inffast.h

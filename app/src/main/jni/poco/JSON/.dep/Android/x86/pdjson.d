@@ -1,0 +1,1 @@
+/Users/andy/AndroidStudioProjects/poco/JSON/obj/Android/x86/debug_static/pdjson.o /Users/andy/AndroidStudioProjects/poco/JSON/obj/Android/x86/release_static/pdjson.o /Users/andy/AndroidStudioProjects/poco/JSON/obj/Android/x86/debug_shared/pdjson.o /Users/andy/AndroidStudioProjects/poco/JSON/obj/Android/x86/release_shared/pdjson.o: src/pdjson.c src/pdjson.h

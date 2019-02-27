@@ -1,0 +1,2 @@
+/Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_static/trees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_static/trees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/debug_shared/trees.o /Users/andy/AndroidStudioProjects/poco/Foundation/obj/Android/x86/release_shared/trees.o: src/trees.c src/deflate.h src/zutil.h src/zlib.h src/zconf.h \
+  src/trees.h
