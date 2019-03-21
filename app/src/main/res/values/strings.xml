@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Cream_Sauce_Smoked_Chicken_Spaghetti</string>
+    <string name="ver_code">HOPE RED</string>
+    <string name="main_left_btn">新增</string>
+    <string name="main_right_btn">刪除</string>
+    <string name="btn_return">返回</string>
+    <string name="blue_flag">fuck blue</string>
+    <string name="yellow_flag">fuck yellow</string>
+    <string name="red_flag">nice red</string>
 </resources>
