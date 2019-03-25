@@ -1,0 +1,2 @@
+# Android_Weather_App
+一個顯示台灣各地氣溫與濕度狀況的App
