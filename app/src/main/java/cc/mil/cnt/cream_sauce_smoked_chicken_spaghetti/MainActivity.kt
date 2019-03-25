@@ -3,6 +3,7 @@ package cc.mil.cnt.cream_sauce_smoked_chicken_spaghetti
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.ListView
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         btn_del.setOnClickListener({ OnClick(DelItem) })
 //        btn_del.setOnClickListener({ OnClick(itemlist, DelItem) })
 
+        val ListRefresh: SwipeRefreshLayout = findViewById(R.id.ListRefresh);
+        ListRefresh.setOnRefreshListener({ OnSwipe() })
+
 //         Example of a call to a native method
 //        sample_text.text = stringFromJNI()
 //        itemlist.add(Item(0,R.drawable.red,"日本旅遊", "日本", 150f, 15f, 0,true))
@@ -49,16 +53,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+//    TODO
     override fun onResume() {
         super.onResume()
-
-        var itemlist: ArrayList<Item>? = null
-        itemlist = DBHelper(resources.getString(R.string.ver_code)).DBReadItems(this, true)
-        UpdateFlag(itemlist)
-
-        val listView: ListView = findViewById(R.id.listview)
-
-        listView.adapter = ItemAdapter(this, itemlist)
+        CheckUpdateTime()
+        UpdateSelectedWeather()
+        UpdateFlag()
+        ShowListView()
     }
 
     private fun OnClick(ACTIVITY: String) {
@@ -77,8 +78,33 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    //    TODO
+    private fun OnSwipe(itemlist: ArrayList<Item>){
+        CheckUpdateTime()
+        UpdateSelectedWeather()
+        UpdateFlag()
+        ShowListView()
+    }
+
+    //    TODO
+    private fun CheckUpdateTime(){
+
+    }
+
+    //    TODO
     private fun UpdateSelectedWeather(db: SQLiteDatabase) {
 
+    }
+
+    //    TODO
+    private fun ShowListView(){
+        var itemlist: ArrayList<Item>? = null
+        itemlist = DBHelper(resources.getString(R.string.ver_code)).DBReadItems(this, true)
+        UpdateFlag(itemlist)
+
+        val listView: ListView = findViewById(R.id.listview)
+
+        listView.adapter = ItemAdapter(this, itemlist)
     }
 
     private fun UpdateFlag(itemlist: ArrayList<Item>) {
