@@ -1,0 +1,2 @@
+DB
+LOCATION(db_id, location, nick_name, temp, humi, update_timestamp, selected)
