@@ -25,7 +25,6 @@ class DBHelper {
             "select * from " + DATABASE_WEATHER_TABLE + " where selected = " + IsSelected.toInt().toString(),
             null
         )
-//        var c = db?.rawQuery("select * from " + DATABASE_WEATHER_TABLE, null)
         c!!.moveToFirst()
         if (c.count > 0) {
             for (i in 0..(c.count - 1)) {
