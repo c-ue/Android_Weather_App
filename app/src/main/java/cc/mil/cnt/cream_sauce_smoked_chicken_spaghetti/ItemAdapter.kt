@@ -32,7 +32,13 @@ class ItemAdapter(val c: Context, val items: ArrayList<Item>) :
         val title_txt: TextView = itemlayout?.findViewById(R.id.title_text)!!
         title_txt.text = item.nick_name
         val detail_txt: TextView = itemlayout.findViewById(R.id.detail_text)!!
-        detail_txt.text = "地點：" + item.location + ", 溫度：" + item.temp + ", 濕度：" + item.humi
+        if (c::class.java.equals(MainActivity::class.java)) {
+            detail_txt.text = "地點：" + item.location + ", 溫度：" + item.temp + ", 濕度：" + item.humi
+        } else if (c::class.java.equals(ADDActivity::class.java)) {
+            detail_txt.text = "地點：" + item.location + ", " + c.resources.getString(R.string.select_str)
+        } else if (c::class.java.equals(DELActivity::class.java)) {
+            detail_txt.text = "地點：" + item.location + ", " + c.resources.getString(R.string.unselect_str)
+        }
         val iv: ImageView = itemlayout.findViewById(R.id.icon_item)!!
         iv.setImageResource(item.flag)
 

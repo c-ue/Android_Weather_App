@@ -1,7 +1,6 @@
 package cc.mil.cnt.cream_sauce_smoked_chicken_spaghetti
 
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
@@ -24,9 +23,10 @@ class MainActivity : AppCompatActivity() {
             System.loadLibrary("native-lib")
         }
 
-        val CurrentItemList: String = "CurrentItemList"
+        //        val CurrentItemList: String = "CurrentItemList"
         val AddItem: String = "ADD_ITEM_ACTIVITY"
         val DelItem: String = "DEL_ITEM_ACTIVITY"
+        val update_delay: Int = 10
     }
 
 
@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         btn_del.setOnClickListener({ OnClick(DelItem) })
 //        btn_del.setOnClickListener({ OnClick(itemlist, DelItem) })
 
-        val ListRefresh: SwipeRefreshLayout = findViewById(R.id.ListRefresh);
-        ListRefresh.setOnRefreshListener({ OnSwipe() })
+        val ListRefresh: SwipeRefreshLayout = findViewById(R.id.ListRefresh)
+        ListRefresh.setOnRefreshListener({ OnSwipe(ListRefresh) })
 
 //         Example of a call to a native method
 //        sample_text.text = stringFromJNI()
@@ -53,12 +53,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    TODO
     override fun onResume() {
         super.onResume()
-        CheckUpdateTime()
         UpdateSelectedWeather()
-        UpdateFlag()
         ShowListView()
     }
 
@@ -78,28 +75,48 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //    TODO
-    private fun OnSwipe(itemlist: ArrayList<Item>){
-        CheckUpdateTime()
+    private fun OnSwipe(ListRefresh: SwipeRefreshLayout) {
         UpdateSelectedWeather()
-        UpdateFlag()
         ShowListView()
+        ListRefresh.isRefreshing = false
     }
 
-    //    TODO
-    private fun CheckUpdateTime(){
+    //    TODO: wait for internet grab data
+    private fun UpdateWeather(db_id: Int, test_data: Int, test_data2: Int): ArrayList<Float> {
+        var a: ArrayList<Float> = ArrayList<Float>()
+        a.add(test_data2.toFloat())
+        a.add(test_data.toFloat())
+        return a
+    }
+
+    private fun UpdateSelectedWeather() {
+        var itemlist: ArrayList<Item>? = null
+        itemlist = DBHelper().DBReadItems(this, true)
+        for (i in 0..(itemlist.count() - 1)) {
+            var now: Long = (System.currentTimeMillis() / 1000)
+            if (now - itemlist.get(i).update_timestamp > update_delay) {
+                var data: ArrayList<Float> =
+                    UpdateWeather(itemlist.get(i).db_id, itemlist.get(i).update_timestamp.toInt(), now.toInt())
+                var item: Item = Item(
+                    itemlist.get(i).db_id,
+                    R.drawable.blue,
+                    itemlist.get(i).location,
+                    itemlist.get(i).nick_name,
+                    data.get(0),
+                    data.get(1),
+                    now,
+                    itemlist.get(i).selected
+                )
+                DBHelper().DBUpdateItem(this, item)
+            }
+        }
+
 
     }
 
-    //    TODO
-    private fun UpdateSelectedWeather(db: SQLiteDatabase) {
-
-    }
-
-    //    TODO
     private fun ShowListView(){
         var itemlist: ArrayList<Item>? = null
-        itemlist = DBHelper(resources.getString(R.string.ver_code)).DBReadItems(this, true)
+        itemlist = DBHelper().DBReadItems(this, true)
         UpdateFlag(itemlist)
 
         val listView: ListView = findViewById(R.id.listview)

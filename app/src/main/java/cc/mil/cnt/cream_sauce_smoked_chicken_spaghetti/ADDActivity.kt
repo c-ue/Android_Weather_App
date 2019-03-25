@@ -20,7 +20,7 @@ class ADDActivity : AppCompatActivity() {
         super.onResume()
 
         var itemlist: ArrayList<Item>? = null
-        itemlist = DBHelper(resources.getString(R.string.ver_code)).DBReadItems(this, false)
+        itemlist = DBHelper().DBReadItems(this, false)
 
         val listView: ListView = findViewById(R.id.listview)
 
@@ -34,7 +34,7 @@ class ADDActivity : AppCompatActivity() {
     private fun itemClicked(position: Int, itemlist: ArrayList<Item>) {
         val item: Item = itemlist.get(position)
         item.selected = true
-        DBHelper(resources.getString(R.string.ver_code)).DBUpdateItem(this, item)
+        DBHelper().DBUpdateItem(this, item)
         val intent = Intent()
         intent.setClass(this@ADDActivity, MainActivity::class.java)
         startActivity(intent)

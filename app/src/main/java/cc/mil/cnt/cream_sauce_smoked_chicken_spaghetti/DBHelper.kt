@@ -6,20 +6,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class DBHelper(ver: String) {
+class DBHelper {
 
     companion object {
-        val DATABASE_VERSION_TABLE: String = "ver"
-        val DATABASE_VERSION_ID: Int = 0
-        //        val DATABASE_VERSION_CODE: String = ver_code
-        val DATABASE_VERSION_CREATE: String =
-            "create table " + DATABASE_VERSION_TABLE + "(db_id integer PRIMARY KEY, ver TEXT);"
         val DATABASE_WEATHER_TABLE: String = "weather"
         val DATABASE_WEATHER_CREATE: String =
             "create table " + DATABASE_WEATHER_TABLE + "(db_id integer PRIMARY KEY, location TEXT, nick_name TEXT, temp REAL, humi REAL, update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, selected integer);"
     }
 
-    var dATABASE_VERSION_CODE: String = ver
     var db: SQLiteDatabase? = null
 
     fun DBReadItems(context: Context, IsSelected: Boolean): ArrayList<Item> {
@@ -79,7 +73,7 @@ class DBHelper(ver: String) {
         cv.put("nick_name", item.nick_name)
         cv.put("temp", item.temp)
         cv.put("humi", item.humi)
-        cv.put("update_timestamp", "strftime('%s', 'now')")
+        cv.put("update_timestamp", item.update_timestamp)
         cv.put("selected", item.selected.toInt())
         db?.update(
             DATABASE_WEATHER_TABLE, cv,
@@ -98,43 +92,16 @@ class DBHelper(ver: String) {
     ) {
 
 
-        override fun onCreate(db: SQLiteDatabase?) {
-            val cursor = db?.rawQuery(
-                "select DISTINCT tbl_name from sqlite_master where tbl_name = '" + DATABASE_VERSION_TABLE + "'",
-                null
-            )
-            if (cursor!!.count.equals(0)) {
-                buildVerDB(db)
-                buildWeatherDB(db)
-            } else if (cursor.count.equals(1)) {
-                var cursor_ver_code = db.rawQuery(
-                    "select ver from " + DATABASE_VERSION_TABLE + " where db_id = " + DATABASE_VERSION_ID,
-                    null
-                )
-                var ver_code = cursor_ver_code.getString(cursor_ver_code.getColumnIndex("ver"))
-                cursor_ver_code.close()
-                if (ver_code != dATABASE_VERSION_CODE) {
-                    buildVerDB(db)
-                    buildWeatherDB(db)
-                }
-            }
-            cursor.close()
+        override fun onCreate(db: SQLiteDatabase) {
+            buildWeatherDB(db)
         }
 
-        override fun onUpgrade(db: SQLiteDatabase?, oV: Int, nV: Int) {
-        }
-
-        private fun buildVerDB(db: SQLiteDatabase) {
-            db.execSQL("drop table if exists " + DATABASE_VERSION_TABLE)
-            db.execSQL(DATABASE_VERSION_CREATE)
-            val cv = ContentValues()
-            cv.put("db_id", DATABASE_VERSION_ID)
-            cv.put("ver", dATABASE_VERSION_CODE)
-            db.insert(DATABASE_VERSION_TABLE, null, cv)
+        override fun onUpgrade(db: SQLiteDatabase, oV: Int, nV: Int) {
+            buildWeatherDB(db)
         }
 
         private fun buildWeatherDB(db: SQLiteDatabase) {
-            db.execSQL("drop table if exists " + DATABASE_WEATHER_TABLE)
+            db.execSQL("drop table if exists " + DATABASE_WEATHER_TABLE + ";")
             db.execSQL(DATABASE_WEATHER_CREATE)
             db.execSQL("insert into " + DATABASE_WEATHER_TABLE + " values(1, '台北-中正區', '台北-中正區', 0, 0, 0, 0);")
             db.execSQL("insert into " + DATABASE_WEATHER_TABLE + " values(2, '台北-大同區', '台北-大同區', 0, 0, 0, 0);")
