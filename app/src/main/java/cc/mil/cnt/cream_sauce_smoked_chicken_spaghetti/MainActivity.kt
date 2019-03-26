@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val AddItem: String = "ADD_ITEM_ACTIVITY"
         val DelItem: String = "DEL_ITEM_ACTIVITY"
-        val update_delay: Int = 0
+        val update_delay: Int = 10
     }
 
 
